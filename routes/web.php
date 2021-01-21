@@ -29,3 +29,6 @@ Route::get('/plantilla', function() {return view('plantilla');});
 Route::get('/logout', function (){ Auth::logout(); return redirect('/login');});
 
 Route::get('/deposito' , 'pedidosController@index');
+
+Route::post('/eti', 'etiquetasController@imprimir');
+Route::get('/eticrear', 'etiquetasController@create');

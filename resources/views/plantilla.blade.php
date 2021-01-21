@@ -25,6 +25,9 @@
                   <a class="nav-link active" href="{{url('deposito')}}">Deposito</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="{{url('eticrear')}}">Etiquetas</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="#">Laboratorio</a>
                 </li>
                 <li class="nav-item dropdown">
