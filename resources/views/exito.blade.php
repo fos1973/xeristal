@@ -9,8 +9,8 @@
     <script>
           swal("Good job!", "You clicked the button!", "success");
     </script>
-    @php
+    {{-- @php
     return redirect ('eticrear')
-    @endphp
+    @endphp --}}
 
 @endsection
