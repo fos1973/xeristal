@@ -49,23 +49,3 @@
       </div>
   </form>
 @endsection
-
-@section('js')
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-{{-- 
-
-    <script>
-
-      function mostrar(){
-
-
-          swal("Good job!", "You clicked the button!", "success");
-        }
-
-
-
-    </script> --}}
-
-
-
-@endsection

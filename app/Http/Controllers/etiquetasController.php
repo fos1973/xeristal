@@ -120,7 +120,7 @@ class etiquetasController extends Controller
 
           file_put_contents("Z:\Etiqueta.txt", $resultado);
 
-          return redirect ('eticrear');
+          return redirect('exito');
 
 
     }

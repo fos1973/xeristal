@@ -32,3 +32,6 @@ Route::get('/deposito' , 'pedidosController@index');
 
 Route::post('/eti', 'etiquetasController@imprimir');
 Route::get('/eticrear', 'etiquetasController@create');
+Route::get('/exito', function(){
+  return view('exito');
+});
