@@ -85,13 +85,43 @@ class etiquetasController extends Controller
 
     public function imprimir(Request $request){
 
-      dd($request);
+          $reglas = [
+            "cliente" => "string|max:30" ,
+            "domicilio" => "string|max:50" ,
+            "provincia" => "string|max:20" ,
+            "bultos" => "integer|min:1|max:1000",
+            "etiquetas" => "integer|min:1|max:50",
+            "remito" => "string|max:10"
+          ];
 
-        $cliente = $request["cliente"];
-        $domicilio = $request["domicilio"];
-        $provincia = $request["provincia"];
-        $bultos = $request["Bultos"];
-        $etiquetas = $request["etiquetas"];
+          $mensajes = [
+            "string" => "El campo :attribute debe ser de texto",
+            "integer" => "EL campo :attribute debe ser un entero",
+            "max" => "El campo :attribute debe ser menor a :max",
+            "min" => "El campo :attribute debe ser mayor o igual a :min"
+          ];
+
+
+          $this->validate($request, $reglas, $mensajes);
+
+
+
+          $cliente = strtoupper($request["cliente"]);
+          $domicilio = strtoupper($request["domicilio"]);
+          $provincia = strtoupper($request["provincia"]);
+          $bultos = $request["bultos"];
+          $etiquetas = $request["etiquetas"];
+          $remito = $request["remito"];
+          settype($etiquetas,"integer");
+
+          $resultado = $cliente . "," . $domicilio . "," . $provincia . "," . $bultos . "," . $etiquetas . "," . $remito;
+
+          // dd($resultado);
+
+          file_put_contents("Z:\Etiqueta.txt", $resultado);
+
+          return redirect ('eticrear');
+
 
     }
-}
+};
