@@ -11,19 +11,18 @@ class etiquetasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+      
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view ('etiquetas');
+    public function create() {
+        return view ("etiquetas");
     }
 
     /**
@@ -101,10 +100,7 @@ class etiquetasController extends Controller
             "min" => "El campo :attribute debe ser mayor o igual a :min"
           ];
 
-
           $this->validate($request, $reglas, $mensajes);
-
-
 
           $cliente = strtoupper($request["cliente"]);
           $domicilio = strtoupper($request["domicilio"]);
@@ -116,12 +112,10 @@ class etiquetasController extends Controller
 
           $resultado = $cliente . "," . $domicilio . "," . $provincia . "," . $bultos . "," . $etiquetas . "," . $remito;
 
-          // dd($resultado);
-
           file_put_contents("Z:\Etiqueta.txt", $resultado);
 
-          return redirect('exito');
+          return redirect ('eticrear');
 
 
     }
-};
+}

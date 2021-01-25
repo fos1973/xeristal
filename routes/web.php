@@ -31,7 +31,7 @@ Route::get('/logout', function (){ Auth::logout(); return redirect('/login');});
 Route::get('/deposito' , 'pedidosController@index');
 
 Route::post('/eti', 'etiquetasController@imprimir');
+
 Route::get('/eticrear', 'etiquetasController@create');
-Route::get('/exito', function(){
-  return view('exito');
-});
+
+Route::get('/remitos', 'remitosController@index');

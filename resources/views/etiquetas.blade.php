@@ -48,4 +48,16 @@
         <button type="submit" onclick="mostrar()"  class="btn btn-primary">Enviar</button>
       </div>
   </form>
+
+  @if (!$errors->any())
+
+    <script>
+      function mostrar(){
+      swal("Impresion enviada", "You clicked the button!", "success")};
+    </script>
+  @endif
+@endsection
+
+@section('js')
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
