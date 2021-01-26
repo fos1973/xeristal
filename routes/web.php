@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,16 +21,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/logout', function (){ Auth::logout(); return redirect('/login');});
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/plantilla', function() {return view('plantilla');});
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/logout', function (){ Auth::logout(); return redirect('/login');});
+  Route::get('/plantilla', function() {return view('plantilla');});
+  Route::get('/deposito' , 'pedidosController@index');
+  Route::post('/eti', 'etiquetasController@imprimir');
+  Route::get('/eticrear', 'etiquetasController@create');
+  Route::get('/cia', function (){return view('compania');});
+  Route::get('/remitos/{id}', 'remitosController@index');
+  Route::get('remitos/remitosdetalle/{id}', 'remitosdetalleController@index');
 
-Route::get('/deposito' , 'pedidosController@index');
-
-Route::post('/eti', 'etiquetasController@imprimir');
-
-Route::get('/eticrear', 'etiquetasController@create');
-
-Route::get('/remitos', 'remitosController@index');
+  });

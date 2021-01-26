@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\RTOCABEL10;
+use App\RTODETAL10;
 
-
-class remitosController extends Controller
+class remitosdetalleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +15,12 @@ class remitosController extends Controller
     public function index($id)
     {
 
+      $detalle = RTODETAL10::where('RTOCABE_ID' , $id)
+      ->get();
 
-        $remitos = RTOCABEL10::where('rtcia', $id)
-        ->where('rtdgi', '>' , 0)
-        ->orderby('id','desc')
-        ->limit(10)->get();
+      $vac = compact("detalle");
 
-    
-        $vac = compact("remitos");
-
-
-        return view ('remitos', $vac);
+      return view("remitodeta" , $vac);
 
 
     }
@@ -60,7 +54,9 @@ class remitosController extends Controller
      */
     public function show($id)
     {
-        //
+
+
+
     }
 
     /**

@@ -18,6 +18,7 @@
         <th scope="col">LOCALIDAD</th>
         <th scope="col">CODIGO POSTAL</th>
         <th scope="col">PEDIDO</th>
+        <th scope="col">BULTOS</th>
 
 
 
@@ -29,13 +30,14 @@
 
         @foreach ($remitos as $remito)
           <tr>
-            <td><a class="btn btn-primary" href="etiquetas/{{$remito->id}}" role="button">{{$remito->rtdgi}}</a></td>
+            <td><a class="btn btn-primary" href="remitosdetalle/{{$remito->id}}" role="button">{{$remito->rtdgi}}</a></td>
             <td>{{$remito->empresaremito()}}</td>
             <td>{{$remito->rtdom}}</td>
             <td>{{$remito->rtloc}}</td>
             <td>{{$remito->rtpos}}</td>
             <td>{{$remito->rtped}}</td>
-            
+            <td>{{$remito->totalBultos()}}</td>
+
           </tr>
         @endforeach
 
