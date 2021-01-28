@@ -1,0 +1,42 @@
+* {
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+
+}
+
+.nav{
+  background-color: rgb(249,233,62);
+  font-family:fantasy;
+  padding: 10px;
+}
+
+.contenedor{
+  display: flex;
+  flex-wrap: wrap;
+
+
+}
+
+.over{overflow: inherit;}
+
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.caja{
+  width: 50%;
+
+}
+
+.linea{
+  display:flex;
+  flex-wrap:no-wrap;
+
+
+}
+
+/* .table td, .table th {
+    padding: .50 rem;
+    vertical-align: top */

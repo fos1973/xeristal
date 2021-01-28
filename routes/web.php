@@ -23,8 +23,9 @@ Auth::routes();
 
 Route::get('/logout', function (){ Auth::logout(); return redirect('/login');});
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/pickeo' , 'pedidosController@pickeo');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::middleware(['auth', 'admin'])->group(function () {
 
   Route::get('/plantilla', function() {return view('plantilla');});
   Route::get('/deposito' , 'pedidosController@index');

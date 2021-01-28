@@ -106,4 +106,33 @@ class pedidosController extends Controller
     {
         //
     }
+
+    public function pickeo()
+    {
+        $pedidos = DB::table('PEDIDOP')
+        ->SELECT ('*')
+
+        ->ORDERBY ('prioridad')
+        ->ORDERBY ('cadias','desc')
+        ->ORDERBY ('estado','asc')
+        ->get();
+
+
+
+        $porciento = DB::table('PEDIDOH')
+        ->SELECT ('*')
+        ->WHERE ('mamecu','S')
+        ->GET();
+
+        $antes = DB::table('PEDIDOH')
+        ->SELECT ('*')
+        ->WHERE ('mamecu','A')
+        ->first();
+
+          $vac = compact("pedidos","porciento","antes");
+          // $vac1 = compact("porciento");
+
+
+        return view ('layout', $vac);
+    }
 }

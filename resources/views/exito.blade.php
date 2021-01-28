@@ -8,12 +8,13 @@
 @section('seccion')
 
     <script>
+    // window.location = "{{ url('/cia') }}";
+
     Swal.fire(
             'Impresion enviada',
             '',
             'success');
 
-    window.location = "{{ url('/cia') }}";
     </script>
 
 @endsection
