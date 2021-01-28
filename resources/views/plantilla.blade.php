@@ -8,6 +8,7 @@
     <title>@yield('titulo')</title>
   </head>
   <body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">

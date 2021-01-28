@@ -12,7 +12,7 @@ class etiquetasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-      
+
     }
 
 
@@ -114,7 +114,14 @@ class etiquetasController extends Controller
 
           file_put_contents("Z:\Etiqueta.txt", $resultado);
 
-          return redirect ('eticrear');
+          return redirect ('cia');
+
+
+    }
+
+    public function remitoimprimir($id){
+
+
 
 
     }

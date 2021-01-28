@@ -22,7 +22,7 @@ class remitosController extends Controller
         ->orderby('id','desc')
         ->limit(10)->get();
 
-    
+
         $vac = compact("remitos");
 
 
@@ -96,4 +96,38 @@ class remitosController extends Controller
     {
         //
     }
-}
+
+
+    public function imprimir(Request $req){
+
+      $reglas = [
+        "etiquetas" => "integer|min:1|max:50",
+      ];
+
+      $mensajes = [
+        "integer" => "EL campo :attribute debe ser un entero",
+        "max" => "El campo :attribute debe ser menor a :max",
+        "min" => "El campo :attribute debe ser mayor o igual a :min"
+      ];
+
+      $this->validate($req, $reglas, $mensajes);
+
+
+      $cliente = $req['cliente'];
+      $remito = $req['dgi'];
+      $domicilio = $req['domicilio'];
+      $localidad = $req['localidad'];
+      $bultos = $req['bultos'];
+      $etiquetas = $req['etiquetas'];
+
+
+      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $bultos . "," . $etiquetas . "," . $remito;
+
+      file_put_contents("Z:\Etiqueta.txt", $resultado);
+
+      // dd($resultado);
+
+      return redirect ('exito');
+
+    }
+  }

@@ -41,14 +41,16 @@ class RTOCABEL10 extends Model
 
     $total = 0;
 
-    foreach ($items_del_remito as $item) {
-      $total = $total + ($item->rdcan / $item->rdcaxb);
-    }
+    foreach ($items_del_remito as $item)
+     {
+       if ($item->rdcaxb > 0) {
+       $total =  $total +   ($item->rdcan / $item->rdcaxb);}
+
+      }
     return $total;
-
-
-
   }
+
+
 
 
 

@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/eticrear', 'etiquetasController@create');
   Route::get('/cia', function (){return view('compania');});
   Route::get('/remitos/{id}', 'remitosController@index');
-  Route::get('remitos/remitosdetalle/{id}', 'remitosdetalleController@index');
-
+  Route::get('/remitosdetalle/{id}', 'remitosdetalleController@index');
+  Route::post('/remitosimprimir', 'remitosController@imprimir');
+  Route::get('/exito', function (){return view('exito');});
   });
