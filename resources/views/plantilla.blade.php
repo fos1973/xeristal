@@ -26,24 +26,23 @@
                   <a class="nav-link active" href="{{url('deposito')}}">Deposito</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{url('eticrear')}}">Etiquetas</a>
+                  <a class="nav-link active" href="{{url('pickeo')}}">Pickeo</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a class="nav-link" href="{{url('cia')}}">Remitos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{url('pickeo')}}">Pickeo</a>
-                </li>
+                </li> --}}
+
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown link
+                  <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Expedicion
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="{{url('salidas')}}">Salidas</a></li>
+                    <li><a class="dropdown-item" href="{{url('cia')}}">Remitos</a></li>
+                    <li><a class="dropdown-item" href="{{url('eticrear')}}">Rotulos Manuales</a></li>
                   </ul>
                 </li>
+
               </ul></p>
             </div class="container-fluid">
               <ul class="navbar-nav">

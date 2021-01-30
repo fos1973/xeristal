@@ -111,7 +111,7 @@ class pedidosController extends Controller
     {
         $pedidos = DB::table('PEDIDOP')
         ->SELECT ('*')
-
+        ->WHERE ('estado', '<>' , 'EXPEDICION')
         ->ORDERBY ('prioridad')
         ->ORDERBY ('cadias','desc')
         ->ORDERBY ('estado','asc')
@@ -134,5 +134,34 @@ class pedidosController extends Controller
 
 
         return view ('layout', $vac);
-    }
+      }
+
+      public function salidas()
+      {
+          $pedidos = DB::table('PEDIDOP')
+          ->SELECT ('*')
+          ->WHERE ('estado', 'EXPEDICION')
+          ->ORDERBY ('prioridad')
+          ->ORDERBY ('cadias','desc')
+          ->ORDERBY ('estado','asc')
+          ->get();
+
+
+
+          $porciento = DB::table('PEDIDOH')
+          ->SELECT ('*')
+          ->WHERE ('mamecu','S')
+          ->GET();
+
+          $antes = DB::table('PEDIDOH')
+          ->SELECT ('*')
+          ->WHERE ('mamecu','A')
+          ->first();
+
+            $vac = compact("pedidos","porciento","antes");
+            // $vac1 = compact("porciento");
+
+
+          return view ('layout', $vac);
+        }
 }

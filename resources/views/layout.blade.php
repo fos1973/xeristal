@@ -51,14 +51,14 @@
                     <h1 class="">Estado de pedidos</h1>
               </div>
 
-              <div class="ancho">
+              {{-- <div class="ancho">
                 @foreach ($porciento as $por)
                   <p class="">FALTANTE DEL MES  {{100-($por->pocupe)}} %</p>
                 @endforeach
               </div>
               <div class="ancho">
                 <p class="">FALTANTE MES ANTERIOR {{100-($antes->pocupe)}} %</p>
-              </div>
+              </div> --}}
           </div>
 
     </div>
