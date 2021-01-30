@@ -17,8 +17,10 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/cia', function (){return view('compania');});
   Route::get('/remitos/{id}', 'remitosController@index');
   Route::get('/remitosdetalle/{id}', 'remitosdetalleController@index');
-  Route::post('/remitosimprimir', 'remitosController@imprimir');
   Route::get('/exito', function (){return view('exito');});
+  Route::post('/remitosimprimir', 'remitosController@imprimir');
+  Route::post('/remitosrotulo', 'remitosController@rotulo');
+
 
 });
 

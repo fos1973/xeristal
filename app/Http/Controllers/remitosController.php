@@ -22,6 +22,7 @@ class remitosController extends Controller
         ->orderby('id','desc')
         ->limit(10)->get();
 
+        // dd($remitos);
 
         $vac = compact("remitos");
 
@@ -119,9 +120,11 @@ class remitosController extends Controller
       $localidad = $req['localidad'];
       $bultos = $req['bultos'];
       $etiquetas = $req['etiquetas'];
+      $postal = $req['postal'];
 
 
-      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $bultos . "," . $etiquetas . "," . $remito;
+
+      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $bultos . "," . $etiquetas . "," . $remito . "," . $postal;
 
       file_put_contents("Z:\Etiqueta.txt", $resultado);
 
@@ -130,4 +133,26 @@ class remitosController extends Controller
       return redirect ('exito');
 
     }
+
+    public function rotulo(Request $req){
+
+      $cliente = $req['cliente'];
+      $remito = $req['dgi'];
+      $domicilio = $req['domicilio'];
+      $localidad = $req['localidad'];
+      $bultos = $req['bultos'];
+      $postal = $req['postal'];
+
+
+      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $bultos . "," . $remito . "," . $postal;
+
+      file_put_contents("Z:\Rotulo.txt", $resultado);
+
+
+      return redirect ('exito');
+
+    }
+
+
+
   }

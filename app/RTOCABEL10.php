@@ -50,8 +50,20 @@ class RTOCABEL10 extends Model
     return $total;
   }
 
+  public function fecha(){
+    $dia = substr($this->rtfec,4,2);
+    $mes = substr($this->rtfec,2,2);
+    $ano = substr($this->rtfec,0,2);
+
+    $ano2000 = $ano + 2000;
 
 
+    $fec = ($dia . "/" . $mes . "/" . $ano2000);
+    //
+    // $fecha = date('d-m-Y', $fec);
+    //
+    return $fec;
 
+  }
 
 }
