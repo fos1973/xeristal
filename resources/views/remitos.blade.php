@@ -46,9 +46,11 @@
                   <input type="hidden" name="domicilio" value="{{$remito->rtdom}}">
                   <input type="hidden" name="bultos" value="{{$remito->totalBultos()}}">
                   <input type="hidden" name="localidad" value="{{$remito->rtloc}}">
+                  <input type="hidden" name="provincia" value="{{$remito->rtpro}}">
                   <input type="hidden" name="cliente" value="{{$remito->mcrazo}}">
                   <input type="hidden" name="compania" value="{{$remito->rtcia}}">
                   <input type="hidden" name="postal" value="{{$remito->rtpos}}">
+
 
 
               </form>
@@ -62,6 +64,7 @@
                   <input type="hidden" name="domicilio" value="{{$remito->rtdom}}">
                   <input type="hidden" name="bultos" value="{{$remito->totalBultos()}}">
                   <input type="hidden" name="localidad" value="{{$remito->rtloc}}">
+                  <input type="hidden" name="provincia" value="{{$remito->rtpro}}">
                   <input type="hidden" name="cliente" value="{{$remito->mcrazo}}">
                   <input type="hidden" name="compania" value="{{$remito->rtcia}}">
                   <input type="hidden" name="postal" value="{{$remito->rtpos}}">

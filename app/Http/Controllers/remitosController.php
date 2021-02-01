@@ -118,13 +118,14 @@ class remitosController extends Controller
       $remito = $req['dgi'];
       $domicilio = $req['domicilio'];
       $localidad = $req['localidad'];
+      $provincia = $req['provincia'];
       $bultos = $req['bultos'];
       $etiquetas = $req['etiquetas'];
       $postal = $req['postal'];
 
 
 
-      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $bultos . "," . $etiquetas . "," . $remito . "," . $postal;
+      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . "$provincia" . "," . $bultos . "," . $etiquetas . "," . $remito . "," . $postal;
 
       file_put_contents("Z:\Etiqueta.txt", $resultado);
 
@@ -140,11 +141,12 @@ class remitosController extends Controller
       $remito = $req['dgi'];
       $domicilio = $req['domicilio'];
       $localidad = $req['localidad'];
+      $provincia = $req['provincia'];
       $bultos = $req['bultos'];
       $postal = $req['postal'];
 
 
-      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $bultos . "," . $remito . "," . $postal;
+      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $provincia . "," . $bultos . "," . $remito . "," . $postal;
 
       file_put_contents("Z:\Rotulo.txt", $resultado);
 
