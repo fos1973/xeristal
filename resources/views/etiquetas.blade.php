@@ -29,7 +29,9 @@
         <input type="text" name="domicilio" class="form-control" id="inputEmail4" value="{{old("domicilio")}}" placeholder="Domicilio">
       </div>
       <div class="col-md-4">
-        {{-- <label for="inputPassword4" class="form-label">Provincia</label> --}}
+        <input type="text" name="localidad" class="form-control" id="inputPassword4" value="{{old("localidad")}}" placeholder="Localidad">
+      </div>
+      <div class="col-md-4">
         <input type="text" name="provincia" class="form-control" id="inputPassword4" value="{{old("provincia")}}" placeholder="Provincia">
       </div>
       <div class="col-md-2">

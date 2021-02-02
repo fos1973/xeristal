@@ -87,6 +87,7 @@ class etiquetasController extends Controller
           $reglas = [
             "cliente" => "string|max:30" ,
             "domicilio" => "string|max:50" ,
+            "localidad" => "string|max:50" ,
             "provincia" => "string|max:20" ,
             "bultos" => "integer|min:1|max:1000",
             "etiquetas" => "integer|min:1|max:50",
@@ -104,13 +105,14 @@ class etiquetasController extends Controller
 
           $cliente = strtoupper($request["cliente"]);
           $domicilio = strtoupper($request["domicilio"]);
+          $localidad = strtoupper($request["localidad"]);
           $provincia = strtoupper($request["provincia"]);
           $bultos = $request["bultos"];
           $etiquetas = $request["etiquetas"];
           $remito = $request["remito"];
           settype($etiquetas,"integer");
 
-          $resultado = $cliente . "," . $domicilio . "," . $provincia . "," . $bultos . "," . $etiquetas . "," . $remito;
+          $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . "$provincia" . "," . $bultos . "," . $etiquetas . "," . $remito . "," . $postal;
 
           file_put_contents("Z:\Etiqueta.txt", $resultado);
 
