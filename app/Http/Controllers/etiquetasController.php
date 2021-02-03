@@ -112,7 +112,7 @@ class etiquetasController extends Controller
           $remito = $request["remito"];
           settype($etiquetas,"integer");
 
-          $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . "$provincia" . "," . $bultos . "," . $etiquetas . "," . $remito . ",0";
+          $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . "$provincia" . "," . $bultos . "," . $etiquetas . "," . $remito;
 
           file_put_contents("Z:\Etiqueta.txt", $resultado);
 

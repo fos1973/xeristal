@@ -30,7 +30,6 @@
           <li class="list-group-item list-group-item-danger">{{$error}}</li>
         @endforeach
       </ul>
-
         @foreach ($remitos as $remito)
         <tr>
           <td>
@@ -50,9 +49,6 @@
                   <input type="hidden" name="cliente" value="{{$remito->mcrazo}}">
                   <input type="hidden" name="compania" value="{{$remito->rtcia}}">
                   <input type="hidden" name="postal" value="{{$remito->rtpos}}">
-
-
-
               </form>
 
               <form class="" action="{{ url('remitosimprimir')}}" method="post">
@@ -68,7 +64,6 @@
                   <input type="hidden" name="cliente" value="{{$remito->mcrazo}}">
                   <input type="hidden" name="compania" value="{{$remito->rtcia}}">
                   <input type="hidden" name="postal" value="{{$remito->rtpos}}">
-
               </form>
             </div>
 

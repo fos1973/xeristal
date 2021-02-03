@@ -125,7 +125,7 @@ class remitosController extends Controller
 
 
 
-      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . "$provincia" . "," . $bultos . "," . $etiquetas . "," . $remito . "," . $postal;
+      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . "$provincia" . "," . $bultos . "," . $etiquetas . "," . $remito;
 
       file_put_contents("Z:\Etiqueta.txt", $resultado);
 
@@ -146,7 +146,7 @@ class remitosController extends Controller
       $postal = $req['postal'];
 
 
-      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $provincia . "," . $bultos . "," . $remito . "," . $postal;
+      $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . $provincia . "," . $bultos . "," . $remito;
 
       file_put_contents("Z:\Rotulo.txt", $resultado);
 
