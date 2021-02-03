@@ -28,9 +28,12 @@
                 <li class="nav-item">
                   <a class="nav-link active" href="{{url('pickeo')}}">Pickeo</a>
                 </li>
-                {{-- <li class="nav-item">
-                  <a class="nav-link" href="{{url('cia')}}">Remitos</a>
-                </li> --}}
+
+                @if (Auth::user()->rol->nombre == "Administrador")
+                  <li class="nav-item ">
+                    <a class="nav-link active" href="{{ route('register') }}">{{ __('Registro') }}</a>
+                  </li>
+                @endif
 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
