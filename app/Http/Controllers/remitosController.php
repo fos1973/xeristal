@@ -123,7 +123,6 @@ class remitosController extends Controller
       $etiquetas = $req['etiquetas'];
       $postal = $req['postal'];
 
-dd($bultos);
 
 
       $resultado = $cliente . "," . $domicilio . "," . $localidad . "," . "$provincia" . "," . $bultos . "," . $etiquetas . "," . $remito;
