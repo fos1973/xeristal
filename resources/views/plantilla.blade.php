@@ -46,6 +46,23 @@
                   </ul>
                 </li>
 
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Planificacion
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                      <a class="dropdown-item" href="{{url('ordenes')}}">Ordenes por articulo</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href=""><a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href=""></a>
+                    </li>
+                  </ul>
+                </li>
+
               </ul></p>
             </div class="container-fluid">
               <ul class="navbar-nav">

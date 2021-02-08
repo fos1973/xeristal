@@ -20,6 +20,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/exito', function (){return view('exito');});
   Route::post('/remitosimprimir', 'remitosController@imprimir');
   Route::post('/remitosrotulo', 'remitosController@rotulo');
+  Route::get('/ordenes', function (){return view('elegirarticulos');});
+  Route::get('/articulo', 'planificacionController@show');
 
 
 });
