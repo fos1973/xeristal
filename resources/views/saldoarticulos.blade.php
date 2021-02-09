@@ -47,7 +47,9 @@
         @elseif ($saldo->sicest == 'CUA')
           <td class="fs-2">CUARENTENA</td>
         @elseif ($saldo->sicest == 'E/P')
-          <td class="fs-2">PRODUCCION</td>
+          <td class="fs-2">PENDIENTE DE FABRICACION</td>
+        @elseif ($saldo->sicest == 'O/F')
+          <td class="fs-2">ASIGNADO A FABRICACION</td>
         @else
           <td class="fs-2">{{$saldo->sicest}}</td>
         @endif

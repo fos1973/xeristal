@@ -53,8 +53,11 @@ class planificacionController extends Controller
         ->where('MPPROD', '=', $codigo)
         ->first();
 
-        // dd($descripcion);
-        $descripcion = $des->mpdesc;
+            if (isset($des)) {
+              $descripcion = $des->mpdesc;
+            } else {
+              $descripcion = 'ARTICULO INEXISTENTE';
+            }
 
         $saldos = DB::connection('qs36f')->table('SAINF00')
 

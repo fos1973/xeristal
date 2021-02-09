@@ -54,12 +54,6 @@
                     <li>
                       <a class="dropdown-item" href="{{url('ordenes')}}">Saldo de articulos</a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href=""><a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href=""></a>
-                    </li>
                   </ul>
                 </li>
 
