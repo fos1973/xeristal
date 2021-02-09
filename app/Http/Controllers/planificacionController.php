@@ -46,7 +46,7 @@ class planificacionController extends Controller
      */
     public function show(Request $request)
     {
-        $codigo = str_pad($request['codigo'], 12);
+        $codigo = strtoupper(str_pad($request['codigo'], 12));
 
         $saldos = DB::connection('qs36f')->table('SAINF00')
 
@@ -55,7 +55,8 @@ class planificacionController extends Controller
         ->groupBy('SICART','SICEST')
         ->get();
 
-        dd($saldos);
+        $vac = compact('saldos','codigo');
+        return view('saldoarticulos', $vac);
 
 
     }

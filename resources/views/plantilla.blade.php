@@ -52,7 +52,7 @@
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                      <a class="dropdown-item" href="{{url('ordenes')}}">Ordenes por articulo</a>
+                      <a class="dropdown-item" href="{{url('ordenes')}}">Saldo de articulos</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href=""><a>
