@@ -48,6 +48,14 @@ class planificacionController extends Controller
     {
         $codigo = strtoupper(str_pad($request['codigo'], 12));
 
+        $des = DB::connection('qs36f')->table('FVC701')
+        ->select('MPDESC')
+        ->where('MPPROD', '=', $codigo)
+        ->first();
+
+        // dd($descripcion);
+        $descripcion = $des->mpdesc;
+
         $saldos = DB::connection('qs36f')->table('SAINF00')
 
         ->select('SICART','SICEST','SUM(SICANT) as TOTAL')
@@ -55,7 +63,8 @@ class planificacionController extends Controller
         ->groupBy('SICART','SICEST')
         ->get();
 
-        $vac = compact('saldos','codigo');
+        $vac = compact('saldos','codigo','descripcion');
+
         return view('saldoarticulos', $vac);
 
 

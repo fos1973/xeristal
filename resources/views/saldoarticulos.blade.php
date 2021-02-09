@@ -6,8 +6,13 @@
 
 @section('seccion')
   <div class="container w-50">
-    <div class="mt-5">
-      <p class="fs-1">{{$codigo}}</p>
+    <div class="mt-3 d-flex">
+      <div class="align-self-center margen">
+        <p class="fs-2 mb-0 ">{{$codigo}}</p>
+      </div>
+      <div class="align-self-center ">
+        <p class="fs-4 mb-0 ">{{$descripcion}}</p>
+      </div>
     </div>
     <table class="table mt-5">
   <thead>
@@ -22,6 +27,8 @@
         <tr class="bg-success text-white">
       @elseif ($saldo->sicest == 'CUA')
         <tr class="bg-warning ">
+      @elseif ($saldo->sicest == 'RXV' || $saldo->sicest == 'RCH' )
+          <tr class="bg-danger text-white">
       @else
         <tr>
       @endif
@@ -55,6 +62,7 @@
     @endforeach
   </tbody>
 </table>
+<a class="btn btn-primary btn-lg" href="{{url('ordenes')}}" role="button">Nueva Busqueda</a>
 
   </div>
 @endsection
