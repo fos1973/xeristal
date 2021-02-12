@@ -112,6 +112,7 @@ class pedidosController extends Controller
         $pedidos = DB::table('PEDIDOP')
         ->SELECT ('*')
         ->WHERE ('estado', '<>' , 'EXPEDICION')
+        ->ORWHERE ('logoaviso', '=' , 'okrojo.png')
         ->ORDERBY ('prioridad')
         ->ORDERBY ('cadias','desc')
         ->ORDERBY ('estado','asc')
