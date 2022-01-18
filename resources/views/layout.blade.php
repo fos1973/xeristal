@@ -45,11 +45,23 @@
   <body class="invisible-scrollbar color">
 
     <div class="nav border m-0 p-0">
-          <div class="contenido linea ">
+          <div class="contenido linea d-flex">
 
               <div class="">
                     <h1 class="">Estado de pedidos</h1>
               </div>
+
+              <div class="devoi">
+                  <div class="d-flex">
+                        @if ($pedidoR->cadetr > 0)
+                          <div class="devoi">
+                            <h4 class="">DEVOLUCIONES PENDIENTES</h4>
+                          </div>
+                          <div class="devoi">
+                            <h4 class="">{{$pedidoR->cadetr}}</h4>
+                          </div>
+                        @endif
+                  </div>
 
               {{-- <div class="ancho">
                 @foreach ($porciento as $por)
@@ -59,9 +71,10 @@
               <div class="ancho">
                 <p class="">FALTANTE MES ANTERIOR {{100-($antes->pocupe)}} %</p>
               </div> --}}
-          </div>
+                </div>
 
     </div>
+        </div>
 
     <div class="contenedor">
       @foreach ($pedidos->chunk(20) as $chunk)

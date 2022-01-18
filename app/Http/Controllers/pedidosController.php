@@ -14,6 +14,21 @@ class pedidosController extends Controller
      */
     public function index()
     {
+
+        $pedidoD = DB::table('PEDIDOD')
+        ->SELECT('*')
+        ->get();
+
+        $pedidoR = $pedidoD->count();
+
+        // dd($pedidoR);
+
+        // $pedidoR = DB::table('PEDIDOR')
+        // ->SELECT('*')
+        // ->first();
+        // // dd($pedidoR);
+
+
         $pedidos = DB::table('PEDIDOP')
         ->SELECT ('*')
 
@@ -21,7 +36,6 @@ class pedidosController extends Controller
         ->ORDERBY ('cadias','desc')
         ->ORDERBY ('estado','asc')
         ->get();
-
 
 
         $porciento = DB::table('PEDIDOH')
@@ -34,12 +48,31 @@ class pedidosController extends Controller
         ->WHERE ('mamecu','A')
         ->first();
 
-          $vac = compact("pedidos","porciento","antes");
+
+          $vac = compact("pedidos","porciento","antes","pedidoR");
           // $vac1 = compact("porciento");
 
-
+          // dd($vac);
         return view ('deposito', $vac);
     }
+
+
+
+    public function devoluciones()
+    {
+      $pedidoD = DB::table('PEDIDOD')
+      ->SELECT('*')
+      ->get();
+
+      $vac = compact("pedidoD");
+      dd($vac);
+
+      return view ('devoluciones', $vac);
+
+
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -109,6 +142,11 @@ class pedidosController extends Controller
 
     public function pickeo()
     {
+        $pedidoR = DB::table('PEDIDOR')
+        ->SELECT('*')
+        ->first();
+
+
         $pedidos = DB::table('PEDIDOP')
         ->SELECT ('*')
         ->WHERE ('estado', '<>' , 'EXPEDICION')
@@ -130,7 +168,7 @@ class pedidosController extends Controller
         ->WHERE ('mamecu','A')
         ->first();
 
-          $vac = compact("pedidos","porciento","antes");
+          $vac = compact("pedidos","porciento","antes","pedidoR");
           // $vac1 = compact("porciento");
 
 
@@ -139,6 +177,11 @@ class pedidosController extends Controller
 
       public function salidas()
       {
+          $pedidoR = DB::table('PEDIDOR')
+          ->SELECT('*')
+          ->first();
+
+
           $pedidos = DB::table('PEDIDOP')
           ->SELECT ('*')
           ->WHERE ('estado', 'EXPEDICION')
@@ -159,7 +202,7 @@ class pedidosController extends Controller
           ->WHERE ('mamecu','A')
           ->first();
 
-            $vac = compact("pedidos","porciento","antes");
+          $vac = compact("pedidos","porciento","antes","pedidoR");
             // $vac1 = compact("porciento");
 
 

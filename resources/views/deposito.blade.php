@@ -11,9 +11,19 @@
       <div class="nav border m-0 p-0">
             <div class="contenido linea p-0">
                 <div class="d-flex">
-                      <h4 class="p-0 m-0">PEDIDOS</h4>
-                
+
+                      @if ($pedidoR > 0)
+                        <a class="btn btn-danger btn-lg" href="/devoluciones" role="button">
+                            <div class="">
+                              <h5 class="fon">DEVOLUCIONES PENDIENTES {{$pedidoR}}</h5>
+                            </div>
+                        </a>
+
+                      @else
+                        <h4 class="p-0 m-0">PEDIDOS</h4>
+                      @endif
                 </div>
+
                 <div class="ancho p-0">
                   @foreach ($porciento as $por)
                     <p class="p-0 m-0">FALTANTE DEL MES  {{100-($por->pocupe)}} %</p>

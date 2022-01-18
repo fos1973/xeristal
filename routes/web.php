@@ -29,4 +29,5 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
   Route::get('/deposito' , 'pedidosController@index');
+  Route::get('/devoluciones' , 'pedidosController@devoluciones');
   });

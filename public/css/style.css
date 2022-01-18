@@ -92,3 +92,13 @@ td{
 	margin-left: 8px;
 	margin-right:8px;
 }
+
+.devoi{
+	background-color: red;
+  color: black;
+	padding-right: 50px;
+	font-size: 20px;
+}
+.fon{
+	font-size: 20px;
+}
