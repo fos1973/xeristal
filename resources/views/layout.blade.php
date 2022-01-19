@@ -51,27 +51,22 @@
                     <h1 class="">Estado de pedidos</h1>
               </div>
 
-              <div class="devoi">
-                  <div class="d-flex">
-                        @if ($pedidoR->cadetr > 0)
-                          <div class="devoi">
-                            <h4 class="">DEVOLUCIONES PENDIENTES</h4>
+              <a class="btn btn-danger btn-lg" href="/devoluciones" role="button">
+              <div class="devoi  bg-danger">
+                  <div class="d-flex p-1">
+                        @if ($pedidoR > 0)
+
+                          <div class="devoi  bg-danger">
+                            <h4 class="text-white">DEVOLUCIONES PENDIENTES</h4>
                           </div>
-                          <div class="devoi">
-                            <h4 class="">{{$pedidoR->cadetr}}</h4>
+                          <div class="devoi  bg-danger">
+                            <h4 class="text-white">{{$pedidoR}}</h4>
                           </div>
                         @endif
                   </div>
 
-              {{-- <div class="ancho">
-                @foreach ($porciento as $por)
-                  <p class="">FALTANTE DEL MES  {{100-($por->pocupe)}} %</p>
-                @endforeach
-              </div>
-              <div class="ancho">
-                <p class="">FALTANTE MES ANTERIOR {{100-($antes->pocupe)}} %</p>
-              </div> --}}
                 </div>
+              </a>
 
     </div>
         </div>
@@ -101,28 +96,6 @@
                       @foreach ($chunk as $pedido)
                           <tbody class="">
                             <tr>
-                              {{-- <td>
-                                <div class="linea">
-
-                                          @if (!empty($pedido->logoorigen))
-                                            <img src={{asset('assets/img/'.$pedido->logoorigen)}}  width="30" alt="">
-                                          @endif
-
-                                          <svg id="barcode_{{$pedido->pcnum}}"></svg>
-                                              <script type="text/javascript">
-                                                    JsBarcode("#barcode_{{$pedido->pcnum}}", {{$pedido->pcnum}},{
-                                                              format: "code128",
-                                                              lineColor: "#000",
-                                                              textMargin: 0,
-                                                              fontSize: 15,
-                                                              margin: 5,
-                                                              width: 1,
-                                                              height: 10,
-                                                              displayValue: false
-                                                            });
-                                              </script>
-                                </div>
-                              </td> --}}
 
                                         <div>
                                             @if (($pedido->canalv)  == "S")

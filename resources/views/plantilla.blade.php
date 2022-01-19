@@ -26,6 +26,9 @@
                   <a class="nav-link active" href="{{url('deposito')}}">Deposito</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link active" href="{{url('devoluciones')}}">Devoluciones</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link active" href="{{url('pickeo')}}">Pickeo</a>
                 </li>
 

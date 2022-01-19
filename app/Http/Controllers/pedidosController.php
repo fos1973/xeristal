@@ -15,7 +15,7 @@ class pedidosController extends Controller
     public function index()
     {
 
-        $pedidoD = DB::table('PEDIDOD')
+        $pedidoD = DB::table('MOINT04')
         ->SELECT('*')
         ->get();
 
@@ -60,12 +60,12 @@ class pedidosController extends Controller
 
     public function devoluciones()
     {
-      $pedidoD = DB::table('PEDIDOD')
+      $pedidod = DB::table('MOINT04')
       ->SELECT('*')
       ->get();
 
-      $vac = compact("pedidoD");
-      dd($vac);
+      $vac = compact("pedidod");
+      // dd($vac);
 
       return view ('devoluciones', $vac);
 
@@ -142,9 +142,13 @@ class pedidosController extends Controller
 
     public function pickeo()
     {
-        $pedidoR = DB::table('PEDIDOR')
+
+        $pedidoD = DB::table('MOINT04')
         ->SELECT('*')
-        ->first();
+        ->get();
+
+        $pedidoR = $pedidoD->count();
+
 
 
         $pedidos = DB::table('PEDIDOP')
