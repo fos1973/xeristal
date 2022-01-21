@@ -181,9 +181,16 @@ class pedidosController extends Controller
 
       public function salidas()
       {
-          $pedidoR = DB::table('PEDIDOR')
-          ->SELECT('*')
-          ->first();
+        $pedidoD = DB::table('MOINT04')
+        ->SELECT('*')
+        ->get();
+
+        $pedidoR = $pedidoD->count();
+
+
+          // $pedidoR = DB::table('PEDIDOR')
+          // ->SELECT('*')
+          // ->first();
 
 
           $pedidos = DB::table('PEDIDOP')

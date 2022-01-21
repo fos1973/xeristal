@@ -11,13 +11,19 @@
 
       <div class="bg-danger h-50 m-40px d-flex justify-content-between">
         <div class="p-3">
-          <h5 class="mb-0 text-white">DEVOLUCIONES</h5>
+          <h5 class="mb-0 text-white">DEVOLUCIONES IYOSEI SIN UBICACION</h5>
         </div>
-
+        <div class="">
+              <a class="btn btn-danger btn-lg pt-3 " href="/salidas" role="button">
+                  <div class="">
+                    <h5 class="fon m-0">VOLVER A SALIDAS</h5>
+                  </div>
+              </a>
+        </div>
         <div class="">
               <a class="btn btn-danger btn-lg pt-3 " href="/pickeo" role="button">
                   <div class="">
-                    <h5 class="fon m-0">PICKEO</h5>
+                    <h5 class="fon m-0">VOLVER A PICKEO</h5>
                   </div>
               </a>
         </div>
@@ -30,8 +36,8 @@
                               <tr class="trc">
                                   <th scope="col">CODIGO</th>
                                   <th scope="col">DESCRIPCION</th>
+                                  <th class="col" scope="col">DIAS ATRASO</th>
                                   <th class="cen" scope="col">CLIENTE</th>
-                                  <th class="cen" scope="col">ESTADO</th>
                                   <th class="cen" scope="col">COMPROBANTE</th>
                                   <th class="cen"scope="col">NUMERO</th>
                                   <th class="der" scope="col">CANTIDAD</th>
@@ -42,11 +48,12 @@
                                 <tr class="">
                                         <td class="">{{$devolucion->sicart}}</td>
                                         <td class="">{{$devolucion->mpdesc}}</td>
+                                        <td class="">{{$devolucion->micadi}}</td>
                                         <td class="">{{$devolucion->mcrazo}}</td>
-                                        <td class="cen">{{$devolucion->sicest}}</td>
                                         <td class="cen">{{$devolucion->mitico}}</td>
                                         <td class="cen">{{$devolucion->minuco}}</td>
-                                        <td class="der"><h5>{{number_format($devolucion->sicant, 2, ',', '.')}}</h5></td>
+
+                                        <td class="der"><h5>{{number_format($devolucion->sicant, 0, ',', '.')}}</h5></td>
                                  </tr>
                           @endforeach
                       </table>

@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/remitosrotulo', 'remitosController@rotulo');
   Route::get('/ordenes', function (){return view('elegirarticulos');});
   Route::get('/articulo', 'planificacionController@show');
+  Route::get('/devoluciones' , 'pedidosController@devoluciones');
 
 
 });
@@ -29,5 +30,4 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
   Route::get('/deposito' , 'pedidosController@index');
-  Route::get('/devoluciones' , 'pedidosController@devoluciones');
   });
