@@ -118,12 +118,12 @@ return [
           	+ (defined('PDO::I5_ATTR_DBC_CURLIB') ? [PDO::I5_ATTR_DBC_CURLIB => ''] : [])
           ],
 
-          'qs36f' => [
+          'QS36F' => [
             	'driver' => 'db2_ibmi_odbc',
             	'driverName' => '{iSeries Access ODBC Driver}',
-            	'host' => '192.168.0.240',
-            	'username' => 'FEDERICO',
-            	'password' => 'FEDERICO',
+              'host' => env('DB2_HOST', ''),
+              'username' => env('DB2_USERNAME', ''),
+              'password' => env('DB2_PASSWORD', ''),
             	'database' => 'WRKRDBDIRE entry',
             	'prefix' => '',
             	'schema' => 'QS36F',

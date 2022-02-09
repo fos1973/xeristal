@@ -32,6 +32,7 @@
                   <a class="nav-link active" href="{{url('pickeo')}}">Pickeo</a>
                 </li>
 
+
                 @if (Auth::user()->rol->nombre == "Administrador")
                   <li class="nav-item ">
                     <a class="nav-link active" href="{{ route('register') }}">{{ __('Registro') }}</a>
@@ -58,6 +59,9 @@
                       <a class="dropdown-item" href="{{url('ordenes')}}">Saldo de articulos</a>
                     </li>
                   </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="{{url('productos')}}">Productos</a>
                 </li>
 
               </ul></p>

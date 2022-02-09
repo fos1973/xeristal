@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\RTOCABEL10;
-
+use Illuminate\Support\Facades\DB;
 
 class remitosController extends Controller
 {
@@ -31,6 +31,11 @@ class remitosController extends Controller
 
 
     }
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
