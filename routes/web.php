@@ -31,5 +31,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
   Route::get('/deposito' , 'pedidosController@index');
-  Route::get('/productos' , 'productosController@index');
+  Route::get('/productos/{id}' , 'productosController@index');
+  Route::get('/listaproductos' , 'productosController@listado');
+  Route::get('/productoseleccion' , 'productosController@show');
   });

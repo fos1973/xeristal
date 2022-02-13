@@ -12,19 +12,30 @@ class productosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         $productos = DB::table('PRODUCTOS')
-        // ->take(30)
+        ->Where('mpprod',$id)
         ->first();
         // dd($productos);
 
-
         return view('productos')->with('productos', $productos);
 
+    }
 
+    public function listado()
+    {
+        $productos = DB::table('PRODUCTOS')->simplepaginate(15);
+        // ->select('mpprod','mpdesc')
+        // ->get();
+        // dd($productos);
+        return view('listaproductos')->with('productos', $productos);
 
     }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -53,9 +64,20 @@ class productosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $codigo = $request['codigo'];
+
+        $productos = DB::table('PRODUCTOS')
+        ->Where('mpprod', $codigo)
+        ->first();
+
+        if (!isset($productos)) {
+          $productos = 'x';
+        }
+
+        return view('productos')->with('productos', $productos);
+
     }
 
     /**

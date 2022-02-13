@@ -48,7 +48,7 @@ class planificacionController extends Controller
     {
         $codigo = strtoupper(str_pad($request['codigo'], 12));
 
-        $des = DB::connection('qs36f')->table('FVC701')
+        $des = DB::connection('QS36F')->table('FVC701')
         ->select('MPDESC')
         ->where('MPPROD', '=', $codigo)
         ->first();
@@ -59,7 +59,7 @@ class planificacionController extends Controller
               $descripcion = 'ARTICULO INEXISTENTE';
             }
 
-        $saldos = DB::connection('qs36f')->table('SAINF00')
+        $saldos = DB::connection('QS36F')->table('SAINF00')
 
         ->select('SICART','SICEST','SUM(SICANT) as TOTAL')
         ->where('SICART', '=', $codigo)

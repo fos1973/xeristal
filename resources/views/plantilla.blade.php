@@ -61,7 +61,7 @@
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="{{url('productos')}}">Productos</a>
+                  <a class="nav-link active" href="{{url('listaproductos')}}">Productos</a>
                 </li>
 
               </ul></p>
