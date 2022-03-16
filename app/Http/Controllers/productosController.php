@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+// use App\FVC701;
 
 class productosController extends Controller
 {
@@ -25,10 +26,10 @@ class productosController extends Controller
 
     public function listado()
     {
-        $productos = DB::table('PRODUCTOS')->simplepaginate(15);
-        // ->select('mpprod','mpdesc')
-        // ->get();
-        // dd($productos);
+        $productos = DB::table('PRODUCTOS')
+        ->select('mpprod','mpdesc')
+        ->paginate(15);
+
         return view('listaproductos')->with('productos', $productos);
 
     }

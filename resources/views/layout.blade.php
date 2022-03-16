@@ -96,22 +96,30 @@
                       @foreach ($chunk as $pedido)
                           <tbody class="">
                             <tr>
+                                  <div>
+                                      @if (($pedido->canalv)  == "S")
+                                        <td>
+                                          <div class="linea">
+                                              <div>
+                                                {{$pedido->pcnum}}
+                                              </div>
+                                              <img src={{asset('assets/img/tienda.png')}}  width="25" alt="">
+                                          </div>
+                                        </td>
 
-                                        <div>
-                                            @if (($pedido->canalv)  == "S")
-                                              <td>
-                                                    <div class="linea">
-                                                              <div>
-                                                                {{$pedido->pcnum}}
-                                                              </div>
-                                                              <img src={{asset('assets/img/tienda.png')}}  width="25" alt="">
-                                                    </div>
-                                              </td>
-
-                                            @else
-                                              <td>{{$pedido->pcnum}}</td>
-                                            @endif
-                                        </div>
+                                      @elseif (($pedido->canalv)  == "A")
+                                        <td class="cen">
+                                          <div class="linea">
+                                              <div>
+                                                {{$pedido->pcnum}}
+                                              </div>
+                                              <img src={{asset('assets/img/academia2.png')}}  width="20" alt="">
+                                          </div>
+                                        </td>
+                                      @else
+                                        <td>{{$pedido->pcnum}}</td>
+                                      @endif
+                                  </div>
 
                               <td>{{$pedido->mcrazo}}</td>
                               <td>{{$pedido->cadias}}</td>

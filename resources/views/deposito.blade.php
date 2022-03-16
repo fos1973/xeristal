@@ -63,6 +63,8 @@
                               @else
                                 <tr>
                               @endif
+
+
                                 @if (($pedido->canalv)  == "S")
                                   <td class="cen">
                                     <div class="linea">
@@ -73,9 +75,21 @@
                                     </div>
                                   </td>
 
+                                @elseif (($pedido->canalv)  == "A")
+                                  <td class="cen">
+                                    <div class="linea">
+                                        <div>
+                                          {{$pedido->pcnum}}
+                                        </div>
+                                        <img src={{asset('assets/img/academia.png')}}  width="20" alt="">
+                                    </div>
+                                  </td>
+
                                 @else
                                   <td class="">{{$pedido->pcnum}}</td>
                                 @endif
+
+
 
                                 <td class="">{{$pedido->mcrazo}}</td>
                                 <td class="cen">{{$pedido->cadias}}</td>

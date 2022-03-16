@@ -37,7 +37,8 @@
         </li>
 
         @foreach ($productos as $key => $producto)
-          @if ($producto != null && $producto <> "0" )
+          @if ($producto != null && $producto <> "0" && trim($producto) <> "")
+
 
         <li class="list-group-item d-flex">
           <div class="" style="width:170px">
