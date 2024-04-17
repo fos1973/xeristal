@@ -33,6 +33,7 @@
             padding: 0px;
             margin-bottom: 0px;
           }
+          .alto{height: 120px}
 
 
 
@@ -89,7 +90,9 @@
                             <th scope="col">VAR</th>
                             <th scope="col">CAJAS</th>
                             <th scope="col">UNI</th>
+                            <th scope="col">REMITO</th>
                             <th scope="col"></th>
+
                           </tr>
                         </thead>
 
@@ -116,6 +119,17 @@
                                               <img src={{asset('assets/img/academia2.png')}}  width="20" alt="">
                                           </div>
                                         </td>
+
+                                      @elseif (($pedido->canalv)  == "U")
+                                        <td class="cen">
+                                          <div class="linea">
+                                              <div>
+                                                {{$pedido->pcnum}}
+                                              </div>
+                                              <img src={{asset('assets/img/openbox.png')}}  width="25" alt="" >
+                                          </div>
+                                        </td>
+
                                       @else
                                         <td>{{$pedido->pcnum}}</td>
                                       @endif
@@ -145,12 +159,15 @@
                               <td>{{$pedido->cavaprpe}}</td>
                               <td>{{$pedido->cabupe}}</td>
                               <td>{{$pedido->caunpe}}</td>
+                              <td>{{$pedido->rtrto}}</td>
+
 
                               @if (!empty ($pedido->logoaviso))
                                 <td><img src={{asset('assets/img/'.$pedido->logoaviso)}}  width="25" alt=""></td>
                               @else
                                 <td></td>
                               @endif
+
 
 
                             </tr>

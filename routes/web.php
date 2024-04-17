@@ -34,4 +34,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
   Route::get('/productos/{id}' , 'productosController@index');
   Route::get('/listaproductos' , 'productosController@listado');
   Route::get('/productoseleccion' , 'productosController@show');
+  Route::get('/programacion/{centro}' , 'planificacionController@produccion');
+
   });

@@ -58,6 +58,18 @@
                     <li>
                       <a class="dropdown-item" href="{{url('ordenes')}}">Saldo de articulos</a>
                     </li>
+                    <li>
+                      <a class="dropdown-item" href="{{url('programacion/POM')}}">Programacion POMOS</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{url('programacion/OFF')}}">Programacion OFFSET</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{url('programacion/INY')}}">Programacion TAPAS</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{url('programacion/SOP')}}">Programacion SOPLADO</a>
+                    </li>
                   </ul>
                 </li>
                 <li class="nav-item">

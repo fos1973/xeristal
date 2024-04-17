@@ -14,7 +14,12 @@ class planificacionController extends Controller
      */
     public function index()
     {
-        //
+      $des = DB::connection('QS36F')->table('FVC701')
+      ->select('MPDESC')
+      ->where('MPPROD', '=', $codigo)
+      ->first();
+
+
     }
 
     /**
@@ -106,4 +111,27 @@ class planificacionController extends Controller
     {
         //
     }
+    public function produccion($centro)
+    {
+      $maquinas = DB::connection('QS36F')->table('MAPRT01')
+
+      ->SELECT('*')
+      ->WHERE ('CELAB', '=', $centro)
+      ->WHERE ('NUMAPR', '<>', 999999)
+      ->ORDERBY ('NUMAPR','asc')
+      ->ORDERBY ('TUMAPR','asc')
+      ->get();
+      // dd($maquinas);
+
+
+      $vac = compact('maquinas');
+
+      return view('programacion', $vac);
+
+
+
+
+      // return view ('programacion/pom');
+    }
+
 }

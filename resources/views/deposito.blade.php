@@ -85,6 +85,16 @@
                                     </div>
                                   </td>
 
+                                @elseif (($pedido->canalv)  == "U")
+                                  <td class="cen">
+                                    <div class="linea">
+                                        <div>
+                                          {{$pedido->pcnum}}
+                                        </div>
+                                        <img src={{asset('assets/img/openbox.png')}}  width="20" alt="">
+                                    </div>
+                                  </td>
+
                                 @else
                                   <td class="">{{$pedido->pcnum}}</td>
                                 @endif
