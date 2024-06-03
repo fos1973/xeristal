@@ -113,25 +113,146 @@ class planificacionController extends Controller
     }
     public function produccion($centro)
     {
+
+      DB::connection('QGPL')->table('TPGMF00')
+    ->insert(['CMD' => 'CALL PRODUCCION/AROFC22']);
+
+
       $maquinas = DB::connection('QS36F')->table('MAPRT01')
 
       ->SELECT('*')
       ->WHERE ('CELAB', '=', $centro)
       ->WHERE ('NUMAPR', '<>', 999999)
-      ->ORDERBY ('NUMAPR','asc')
+      ->ORDERBY ('NUMAPR','ASC')
+      ->ORDERBY ('TUMAPR','ASC')
+      // ->tosql();
+      // dd($maquinas);
+      ->get();
+
+
+      $maq_sin_P = DB::connection('QS36F')->table('MAPRT01')
+
+      ->SELECT('*')
+      ->WHERE ('CELAB', '=', $centro)
+      ->WHERE ('NUMAPR', '=', 999999)
+      ->ORDERBY ('CADIEN','asc')
       ->ORDERBY ('TUMAPR','asc')
       ->get();
-      // dd($maquinas);
-
-
-      $vac = compact('maquinas');
-
-      return view('programacion', $vac);
 
 
 
+      if ($centro == 'POM') {
+        $centro = 'INYECCION DE POMOS';
+      }
+      elseif ($centro == 'INY') {
+        $centro = 'INYECCION DE TAPAS';
+      }
+      elseif ($centro == 'EXT') {
+        $centro = 'EXTRUSION';
+      }
+      elseif ($centro == 'SOP') {
+        $centro = 'SOPLADO';
+      }
+      elseif ($centro == 'IMP') {
+        $centro = 'SERIGRAFIA Y STAMPING';
+      }
+      elseif ($centro == 'OFF') {
+        $centro = 'OFFSET';
+      }
+      elseif ($centro == 'EMB') {
+        $centro = 'EMBALADO';
+      }
 
-      // return view ('programacion/pom');
+
+
+
+
+
+
+      return view('programacion', compact('maquinas', 'maq_sin_P', 'centro'));
+
     }
+
+    public function armados()
+    {
+
+
+      $armados = DB::connection('QS36F')->table('MAPRT01')
+
+      ->SELECT('*')
+      ->WHERE ('ARCOMP', '<>', 0)
+      ->ORDERBY ('ARCOMP','ASC')
+      ->ORDERBY ('OFCALM','ASC')
+      // ->tosql();
+      ->get();
+      // dd($armados);
+    //
+    //   $columna = 'ofcalm';
+    //   $valor = 'ofcart';
+    //   $agrupados = [];
+    //       foreach ($armados as $armado) {
+    //           $arcomp = $armado->arcomp;
+    //           if (!isset($agrupados[$arcomp])) {
+    //             $agrupados[$arcomp] = ['arcomp' => $arcomp];
+    //     }
+    //
+    //       $agrupados[$arcomp][$armado->$columna] = $armado->$valor;
+    //
+    // }
+    //
+    // dd($agrupados);
+        // $agrupados[];
+        // $agrupados['armado1'] = 1234;
+
+
+          foreach ($armados as $armado) {
+
+                //datos comunes a los armados
+                $agrupados[$armado->arcomp]['armado'] = $armado->arcomp;
+                $agrupados[$armado->arcomp]['codigoArmado'] = $armado->ararti;
+                $agrupados[$armado->arcomp]['descripcion'] = $armado->mpdesc;
+                $agrupados[$armado->arcomp]['planificado'] = $armado->arplan;
+                $agrupados[$armado->arcomp]['cliente'] = $armado->mcrazo;
+                $agrupados[$armado->arcomp]['oc'] = $armado->pcnuoc;
+                $agrupados[$armado->arcomp]['atraso'] = $armado->cadien;
+                $agrupados[$armado->arcomp]['clise'] = $armado->maclise;
+
+
+
+
+
+                if ($armado->celab == 'EXT') { $centro = 'ext';}
+                if ($armado->celab == 'POM') { $centro = 'pom';}
+                if ($armado->celab == 'OFF') { $centro = 'off';}
+                if ($armado->celab == 'IMP') { $centro = 'imp';}
+                if ($armado->celab == 'EMB') { $centro = 'emb';}
+                if ($armado->celab == 'INY') { $centro = 'tap';}
+
+
+                $agrupados[$armado->arcomp]["$centro _orden"] = $armado->ofcomp;
+                $agrupados[$armado->arcomp]["$centro _codigo"] = $armado->ofcart;
+                $agrupados[$armado->arcomp]["$centro _barras"] = $armado->numoin;
+                $agrupados[$armado->arcomp]["$centro _diametro"] = $armado->mpdiam;
+                $agrupados[$armado->arcomp]["$centro _rosca"] = $armado->mprosm;
+                $agrupados[$armado->arcomp]["$centro _perforacion"] = $armado->mpperm;
+                $agrupados[$armado->arcomp]["$centro _cantidad"] = number_format($armado->ofcant, 0, ',', '.');
+                $agrupados[$armado->arcomp]["$centro _pendiente"] = number_format($armado->ofcape, 0, ',', '.');
+                $agrupados[$armado->arcomp]["$centro _diametro"] = $armado->mpdiam;
+
+          }
+          // $agrupa = collect($agrupados);
+          // dd($agrupa);
+          // dd($agrupados);
+
+
+
+
+
+
+      return view('programacionArmados', compact('agrupados'));
+
+    }
+
+
 
 }

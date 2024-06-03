@@ -60,7 +60,7 @@
 
 
 
-/* tr {line-height: 10px;} */
+tr {line-height: 10px;}
 
 .trc{
 	background-color: blue;
@@ -101,4 +101,14 @@ td{
 }
 .fon{
 	font-size: 20px;
+}
+
+.margenl{
+	margin-left: 20px;
+}
+.fonc{
+	font-size: 12px;
+}
+.hola{
+	background-color: green;
 }

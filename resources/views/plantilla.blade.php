@@ -2,13 +2,18 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+
 
     <title>@yield('titulo')</title>
   </head>
   <body>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  {{-- <script src="/js/pg.js"></script> --}}
+
 
 
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
@@ -59,10 +64,19 @@
                       <a class="dropdown-item" href="{{url('ordenes')}}">Saldo de articulos</a>
                     </li>
                     <li>
+                      <a class="dropdown-item" href="{{url('programacion/EXT')}}">Programacion EXTRUSION</a>
+                    </li>
+                    <li>
                       <a class="dropdown-item" href="{{url('programacion/POM')}}">Programacion POMOS</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="{{url('programacion/OFF')}}">Programacion OFFSET</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{url('programacion/IMP')}}">Programacion SERIGRAFIA</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{url('programacion/EMB')}}">Programacion EMBALADO</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="{{url('programacion/INY')}}">Programacion TAPAS</a>
@@ -89,8 +103,8 @@
     <section>
       @yield('seccion')
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> --}}
     @yield('js')
   </body>
 </html>

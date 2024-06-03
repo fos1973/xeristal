@@ -23,7 +23,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/ordenes', function (){return view('elegirarticulos');});
   Route::get('/articulo', 'planificacionController@show');
   Route::get('/devoluciones' , 'pedidosController@devoluciones');
-
+  Route::get('/programacion/{centro}' , 'planificacionController@produccion');
+  Route::get('/programacionArmados' , 'planificacionController@armados');
 
 
 });
@@ -34,6 +35,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
   Route::get('/productos/{id}' , 'productosController@index');
   Route::get('/listaproductos' , 'productosController@listado');
   Route::get('/productoseleccion' , 'productosController@show');
-  Route::get('/programacion/{centro}' , 'planificacionController@produccion');
 
   });
