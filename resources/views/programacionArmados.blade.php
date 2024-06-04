@@ -18,14 +18,20 @@
 
     <body>
 
+
+
+
+
     <seccion class="">
 
-      <table class="table">
+      <table class="table table-striped">
               <thead>
                   <tr>
                     <th scope="col">ARMADO</th>
                     <th scope="col">CODIGO</th>
-                    <th scope="col">DESCRIPCION</th>
+                    {{-- <th scope="col">DESCRIPCION</th> --}}
+                    {{-- <th scope="col">CLIENTE</th> --}}
+                    {{-- <th scope="col">ATRASO</th> --}}
                     <th scope="col">SOPLADO</th>
                     <th scope="col">TAPAS</th>
                     <th scope="col">EXTRUSION</th>
@@ -37,58 +43,196 @@
               </thead>
               <tbody>
                 @foreach ($agrupados as $armado)
+                    @php
 
-                  <tr>
-                    <td>
+                      $sopClase = 0;
+                      $tapClase = 0;
+                      $extClase = 0;
+                      $pomClase = 0;
+                      $offClase = 0;
+                      $impClase = 0;
+                      $embClase = 0;
+                      $elaClase = 0;
+                      $envClase = 0;
+
+                      if (isset($armado['sopEstado']) && $armado["sopEstado"] == 'I') {$sopClase = "bg-success text-white";}
+                      if (isset($armado['tapEstado']) && $armado["tapEstado"] == 'I') {$tapClase = "bg-success text-white";}
+                      if (isset($armado['extEstado']) && $armado["extEstado"] == 'I') {$extClase = "bg-success text-white";}
+                      if (isset($armado['pomEstado']) && $armado["pomEstado"] == 'I') {$pomClase = "bg-success text-white";}
+                      if (isset($armado['offEstado']) && $armado["offEstado"] == 'I') {$offClase = "bg-success text-white";}
+                      if (isset($armado['impEstado']) && $armado["impEstado"] == 'I') {$impClase = "bg-success text-white";}
+                      if (isset($armado['embEstado']) && $armado["embEstado"] == 'I') {$embClase = "bg-success text-white";}
+                      if (isset($armado['elaEstado']) && $armado["elaEstado"] == 'I') {$elaClase = "bg-success text-white";}
+                      if (isset($armado['envEstado']) && $armado["envEstado"] == 'I') {$envClase = "bg-success text-white";}
+
+                    @endphp
+
+                  <tr class="">
+
+                            {{-- DATOS COMUNES --}}
+                    <td >
                       <div class="">
                         @isset($armado['armado']) {{$armado["armado"]}} @endisset
                       </div>
                     </td>
+
                     <td>
                       <div class="">
                         @isset($armado['codigoArmado']) {{$armado["codigoArmado"]}} @endisset
                       </div>
-                    </td>
-                    <td>
-                      <div class="">
+                      <div class="mt-2">
                         @isset($armado['descripcion']) {{$armado["descripcion"]}} @endisset
-                      </div>
+                        </div>
                     </td>
-                    <td>
+
+                    {{-- <td>
                       <div class="">
-                        @isset($armado['armado']) {{$armado["armado"]}} @endisset
+                        @isset($armado['atraso']) {{$armado["atraso"]}} @endisset
                       </div>
-                    </td>
-                    <td>
+                    </td> --}}
+
+                            {{-- SOPLADO --}}
+                    <td class="{{$sopClase}}">
                       <div class="">
-                        @isset($armado['armado']) {{$armado["armado"]}} @endisset
+                        <div class="">
+                         <div class="">
+                            @isset($armado['sopOrden']) OF: {{$armado["sopOrden"]}}  CB: {{$armado["sopBarras"]}} @endisset
+                          <div class="d-flex">
+                            <div class="mt-2">
+                            @isset($armado['sopCantidad']) Cant: {{$armado["sopCantidad"]}} @endisset
+                            </div>
+                            <div class="mt-2 mx-2">
+                            @isset($armado['sopPendiente']) Pen: {{$armado["sopPendiente"]}} @endisset
+                            </div>
+                          </div>
+                         </div>
+                        </div>
                       </div>
                     </td>
-                    <td>
+
+                            {{-- TAPAS --}}
+
+                    <td class="{{$tapClase}}">
                       <div class="">
-                        @isset($armado['armado']) {{$armado["armado"]}} @endisset
+                        <div class="">
+                         <div class="">
+                            @isset($armado['tapOrden']) OF: {{$armado["tapOrden"]}}  CB: {{$armado["tapBarras"]}} @endisset
+                          <div class="d-flex">
+                            <div class="mt-2">
+                            @isset($armado['tapCantidad']) Cant: {{$armado["tapCantidad"]}} @endisset
+                            </div>
+                            <div class="mt-2 mx-2">
+                            @isset($armado['tapPendiente']) Pen: {{$armado["tapPendiente"]}} @endisset
+                            </div>
+                          </div>
+                         </div>
+                        </div>
                       </div>
                     </td>
-                    <td>
+
+                            {{-- EXTRUSION --}}
+
+                    <td class="{{$extClase}}">
                       <div class="">
-                        @isset($armado['armado']) {{$armado["armado"]}} @endisset
+                        <div class="">
+                         <div class="">
+                            @isset($armado['extOrden']) OF: {{$armado["extOrden"]}}  CB: {{$armado["extBarras"]}} @endisset
+                          <div class="d-flex">
+                            <div class="mt-2">
+                            @isset($armado['extCantidad']) Cant: {{$armado["extCantidad"]}} @endisset
+                            </div>
+                            <div class="mt-2 mx-2">
+                            @isset($armado['extPendiente']) Pen: {{$armado["extPendiente"]}} @endisset
+                            </div>
+                          </div>
+                         </div>
+                        </div>
                       </div>
                     </td>
-                    <td>
+
+                            {{-- INYECCION DE CABEZAS --}}
+
+                    <td class="{{$tapClase}}">
                       <div class="">
-                        @isset($armado['armado']) {{$armado["armado"]}} @endisset
+                        <div class="">
+                         <div class="">
+
+                            @isset($armado['pomOrden']) OF: {{$armado["pomOrden"]}}  CB: {{$armado["pomBarras"]}} @endisset
+                          <div class="d-flex">
+                            <div class="mt-2">
+                            @isset($armado['pomCantidad']) Cant: {{$armado["pomCantidad"]}} @endisset
+                            </div>
+                            <div class="mt-2 mx-2">
+                            @isset($armado['pomPendiente']) Pen: {{$armado["pomPendiente"]}} @endisset
+                            </div>
+                          </div>
+                         </div>
+                        </div>
                       </div>
                     </td>
-                    <td>
+
+                            {{-- OFFSET --}}
+
+                    <td class="{{$offClase}}">
                       <div class="">
-                        @isset($armado['armado']) {{$armado["armado"]}} @endisset
+                        <div class="">
+                         <div class="">
+                            @isset($armado['offOrden']) OF: {{$armado["offOrden"]}}  CB: {{$armado["offBarras"]}} @endisset
+                          <div class="d-flex">
+                            <div class="mt-2">
+                            @isset($armado['offCantidad']) Cant: {{$armado["offCantidad"]}} @endisset
+                            </div>
+                            <div class="mt-2 mx-2">
+                            @isset($armado['offPendiente']) Pen: {{$armado["offPendiente"]}} @endisset
+                            </div>
+                          </div>
+                         </div>
+                        </div>
                       </div>
                     </td>
-                    <td>
+
+                            {{-- SERIGRAFIA Y STAMPING --}}
+
+                    <td class="{{$impClase}}">
                       <div class="">
-                        @isset($armado['armado']) {{$armado["armado"]}} @endisset
+                        <div class="">
+                         <div class="">
+                            @isset($armado['impOrden']) OF: {{$armado["impOrden"]}}  CB: {{$armado["impBarras"]}} @endisset
+                          <div class="d-flex">
+                            <div class="mt-2">
+                            @isset($armado['impCantidad']) Cant: {{$armado["impCantidad"]}} @endisset
+                            </div>
+                            <div class="mt-2 mx-2">
+                            @isset($armado['impPendiente']) Pen: {{$armado["impPendiente"]}} @endisset
+                            </div>
+                          </div>
+                         </div>
+                        </div>
                       </div>
                     </td>
+
+                            {{-- EMBALADO --}}
+
+
+                    <td class="{{$embClase}}">
+                      <div class="">
+                        <div class="">
+                         <div class="">
+                            @isset($armado['embOrden']) OF: {{$armado["embOrden"]}}  CB: {{$armado["embBarras"]}} @endisset
+                          <div class="d-flex">
+                            <div class="mt-2">
+                            @isset($armado['embCantidad']) Cant: {{$armado["embCantidad"]}} @endisset
+                            </div>
+                            <div class="mt-2 mx-2">
+                            @isset($armado['embPendiente']) Pen: {{$armado["embPendiente"]}} @endisset
+                            </div>
+                          </div>
+                         </div>
+                        </div>
+                      </div>
+                    </td>
+
+
 
                   </tr>
 
@@ -100,12 +244,7 @@
 
 
 
-            @foreach ($agrupados as $ag)
 
-
-
-
-            @endforeach
 
 
       <script type="text/javascript">

@@ -219,25 +219,27 @@ class planificacionController extends Controller
 
 
 
-
-
                 if ($armado->celab == 'EXT') { $centro = 'ext';}
                 if ($armado->celab == 'POM') { $centro = 'pom';}
                 if ($armado->celab == 'OFF') { $centro = 'off';}
                 if ($armado->celab == 'IMP') { $centro = 'imp';}
                 if ($armado->celab == 'EMB') { $centro = 'emb';}
                 if ($armado->celab == 'INY') { $centro = 'tap';}
+                if ($armado->celab == 'SOP') { $centro = 'sop';}
+                if ($armado->celab == 'ENV') { $centro = 'env';}
+                if ($armado->celab == 'ELA') { $centro = 'ela';}
 
 
-                $agrupados[$armado->arcomp]["$centro _orden"] = $armado->ofcomp;
-                $agrupados[$armado->arcomp]["$centro _codigo"] = $armado->ofcart;
-                $agrupados[$armado->arcomp]["$centro _barras"] = $armado->numoin;
-                $agrupados[$armado->arcomp]["$centro _diametro"] = $armado->mpdiam;
-                $agrupados[$armado->arcomp]["$centro _rosca"] = $armado->mprosm;
-                $agrupados[$armado->arcomp]["$centro _perforacion"] = $armado->mpperm;
-                $agrupados[$armado->arcomp]["$centro _cantidad"] = number_format($armado->ofcant, 0, ',', '.');
-                $agrupados[$armado->arcomp]["$centro _pendiente"] = number_format($armado->ofcape, 0, ',', '.');
-                $agrupados[$armado->arcomp]["$centro _diametro"] = $armado->mpdiam;
+                $agrupados[$armado->arcomp][$centro."Orden"] = $armado->ofcomp;
+                $agrupados[$armado->arcomp][$centro."Codigo"] = $armado->ofcart;
+                $agrupados[$armado->arcomp][$centro."Barras"] = $armado->numoin;
+                $agrupados[$armado->arcomp][$centro."Diametro"] = $armado->mpdiam;
+                $agrupados[$armado->arcomp][$centro."Rosca"] = $armado->mprosm;
+                $agrupados[$armado->arcomp][$centro."Perforacion"] = $armado->mpperm;
+                $agrupados[$armado->arcomp][$centro."Cantidad"] = number_format($armado->ofcant, 0, ',', '.');
+                $agrupados[$armado->arcomp][$centro."Pendiente"] = number_format($armado->ofcape, 0, ',', '.');
+                $agrupados[$armado->arcomp][$centro."Diametro"] = $armado->mpdiam;
+                $agrupados[$armado->arcomp][$centro."Estado"] = $armado->ofesta;
 
           }
           // $agrupa = collect($agrupados);
