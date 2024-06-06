@@ -185,6 +185,9 @@ class planificacionController extends Controller
       ->ORDERBY ('OFCALM','ASC')
       // ->tosql();
       ->get();
+
+
+
       // dd($armados);
     //
     //   $columna = 'ofcalm';
@@ -240,18 +243,51 @@ class planificacionController extends Controller
                 $agrupados[$armado->arcomp][$centro."Pendiente"] = number_format($armado->ofcape, 0, ',', '.');
                 $agrupados[$armado->arcomp][$centro."Diametro"] = $armado->mpdiam;
                 $agrupados[$armado->arcomp][$centro."Estado"] = $armado->ofesta;
+                $agrupados[$armado->arcomp][$centro."centro"] = $armado->celab;
 
-          }
-          // $agrupa = collect($agrupados);
-          // dd($agrupa);
-          // dd($agrupados);
+                }
+                // dd($agrupados);
+                // le agrego un marca a los armados para saber cuales FilterIterator
+$nuevo = 0;
+                foreach ($agrupados as $agrupado) {
+                  if (((isset($agrupado["elacentro"]) || isset($agrupado["envcentro"])) && (
+                          (isset($agrupado["extEstado"]) && ($agrupado["extEstado"] <> 'C')) ||
+                          (isset($agrupado["pomEstado"]) && ($agrupado["pomEstado"] <> 'C')) ||
+                          (isset($agrupado["impEstado"]) && ($agrupado["impEstado"] <> 'C')) ||
+                          (isset($agrupado["offEstado"]) && ($agrupado["offEstado"] <> 'C')) ||
+                          (isset($agrupado["embEstado"]) && ($agrupado["embEstado"] <> 'C')) ||
+                          (isset($agrupado["sopEstado"]) && ($agrupado["sopEstado"] <> 'C')))) ||
+                          (!isset($agrupado["elacentro"]) && !isset($agrupado["envcentro"])))
+
+                    {
+                      $nuevo = $agrupado['armado'];
+                    $agrupados[$nuevo]['Marca'] = 1;
+                  }
+                  else {
+                    $nuevo = $agrupado['armado'];
+                    $agrupados[$nuevo]['Marca'] = 0;
+                  }
+                }
+                
+          $sinEnvasado = [] ;
+          $arm = 0;
+
+
+            foreach ($agrupados as $agrupado) {
+
+              $arm = $agrupado['armado'];
+
+              if ($agrupado['Marca'] == 1) {
+
+                $sinEnvasado[$arm] = $agrupado;
+              }
+              // dd($sinEnvasado);
+            }
+            // dd($sinEnvasado);
 
 
 
-
-
-
-      return view('programacionArmados', compact('agrupados'));
+      return view('programacionArmados', compact('sinEnvasado'));
 
     }
 

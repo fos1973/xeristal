@@ -84,6 +84,9 @@
                     <li>
                       <a class="dropdown-item" href="{{url('programacion/SOP')}}">Programacion SOPLADO</a>
                     </li>
+                    <li>
+                      <a class="dropdown-item" href="{{url('/programacionArmados')}}">Programacion ARMADOS</a>
+                    </li>
                   </ul>
                 </li>
                 <li class="nav-item">

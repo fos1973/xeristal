@@ -42,7 +42,7 @@
                   </tr>
               </thead>
               <tbody>
-                @foreach ($agrupados as $armado)
+                @foreach ($sinEnvasado as $armado)
                     @php
 
                       $sopClase = 0;
@@ -55,15 +55,25 @@
                       $elaClase = 0;
                       $envClase = 0;
 
-                      if (isset($armado['sopEstado']) && $armado["sopEstado"] == 'I') {$sopClase = "bg-success text-white";}
-                      if (isset($armado['tapEstado']) && $armado["tapEstado"] == 'I') {$tapClase = "bg-success text-white";}
-                      if (isset($armado['extEstado']) && $armado["extEstado"] == 'I') {$extClase = "bg-success text-white";}
-                      if (isset($armado['pomEstado']) && $armado["pomEstado"] == 'I') {$pomClase = "bg-success text-white";}
-                      if (isset($armado['offEstado']) && $armado["offEstado"] == 'I') {$offClase = "bg-success text-white";}
-                      if (isset($armado['impEstado']) && $armado["impEstado"] == 'I') {$impClase = "bg-success text-white";}
-                      if (isset($armado['embEstado']) && $armado["embEstado"] == 'I') {$embClase = "bg-success text-white";}
-                      if (isset($armado['elaEstado']) && $armado["elaEstado"] == 'I') {$elaClase = "bg-success text-white";}
-                      if (isset($armado['envEstado']) && $armado["envEstado"] == 'I') {$envClase = "bg-success text-white";}
+                      if (isset($armado['sopEstado']) && ($armado["sopEstado"] == 'I' || $armado["sopEstado"] == 'P')) {$sopClase = "bg-success text-white";}
+                      if (isset($armado['tapEstado']) && ($armado["tapEstado"] == 'I' || $armado["tapEstado"] == 'P')) {$tapClase = "bg-success text-white";}
+                      if (isset($armado['extEstado']) && ($armado["extEstado"] == 'I' || $armado["extEstado"] == 'P')) {$extClase = "bg-success text-white";}
+                      if (isset($armado['pomEstado']) && ($armado["pomEstado"] == 'I' || $armado["pomEstado"] == 'P')) {$pomClase = "bg-success text-white";}
+                      if (isset($armado['offEstado']) && ($armado["offEstado"] == 'I' || $armado["offEstado"] == 'P')) {$offClase = "bg-success text-white";}
+                      if (isset($armado['impEstado']) && ($armado["impEstado"] == 'I' || $armado["impEstado"] == 'P')) {$impClase = "bg-success text-white";}
+                      if (isset($armado['embEstado']) && ($armado["embEstado"] == 'I' || $armado["embEstado"] == 'P')) {$embClase = "bg-success text-white";}
+                      if (isset($armado['elaEstado']) && ($armado["elaEstado"] == 'I' || $armado["elaEstado"] == 'P')) {$elaClase = "bg-success text-white";}
+                      if (isset($armado['envEstado']) && ($armado["envEstado"] == 'I' || $armado["envEstado"] == 'P')) {$envClase = "bg-success text-white";}
+
+                      if (isset($armado['sopEstado']) && $armado["sopEstado"] == 'C') {$sopClase = "bg-black text-white";}
+                      if (isset($armado['tapEstado']) && $armado["tapEstado"] == 'C') {$tapClase = "bg-black text-white";}
+                      if (isset($armado['extEstado']) && $armado["extEstado"] == 'C') {$extClase = "bg-black text-white";}
+                      if (isset($armado['pomEstado']) && $armado["pomEstado"] == 'C') {$pomClase = "bg-black text-white";}
+                      if (isset($armado['offEstado']) && $armado["offEstado"] == 'C') {$offClase = "bg-black text-white";}
+                      if (isset($armado['impEstado']) && $armado["impEstado"] == 'C') {$impClase = "bg-black text-white";}
+                      if (isset($armado['embEstado']) && $armado["embEstado"] == 'C') {$embClase = "bg-black text-white";}
+                      if (isset($armado['elaEstado']) && $armado["elaEstado"] == 'C') {$elaClase = "bg-black text-white";}
+                      if (isset($armado['envEstado']) && $armado["envEstado"] == 'C') {$envClase = "bg-black text-white";}
 
                     @endphp
 
@@ -152,7 +162,7 @@
 
                             {{-- INYECCION DE CABEZAS --}}
 
-                    <td class="{{$tapClase}}">
+                    <td class="{{$pomClase}}">
                       <div class="">
                         <div class="">
                          <div class="">
@@ -235,7 +245,6 @@
 
 
                   </tr>
-
 
                 @endforeach
               </tbody>
