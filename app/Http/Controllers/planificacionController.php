@@ -173,6 +173,9 @@ class planificacionController extends Controller
 
     }
 
+
+
+
     public function armados()
     {
 
@@ -268,28 +271,180 @@ $nuevo = 0;
                     $agrupados[$nuevo]['Marca'] = 0;
                   }
                 }
-                
-          $sinEnvasado = [] ;
+
+
+//array que contiene solo los armados que tiene centros de plasticos activos y descarta los de env y ela
+
+          $sinEnv = [] ;
+          $sinEnvasado = [];
           $arm = 0;
-
-
             foreach ($agrupados as $agrupado) {
-
               $arm = $agrupado['armado'];
-
-              if ($agrupado['Marca'] == 1) {
-
-                $sinEnvasado[$arm] = $agrupado;
+                if ($agrupado['Marca'] == 1) {
+                  $sinEnv[$arm] = $agrupado;
               }
-              // dd($sinEnvasado);
+
             }
+
+          $sinEnvasado = collect($sinEnv);
             // dd($sinEnvasado);
-
-
 
       return view('programacionArmados', compact('sinEnvasado'));
 
     }
+
+
+
+
+
+
+    public function armadosExtPom()
+    {
+
+
+      $armados = DB::connection('QS36F')->table('MAPRT01')
+
+      ->SELECT('*')
+      ->WHERE ('ARCOMP', '<>', 0)
+      // ->WHERE ('OFESTA', '<>' , 'C')
+
+      ->WHERE(function($subquery){
+        return $subquery->where('CELAB','POM')
+        ->orwhere('CELAB', 'EXT');
+      })
+
+      ->ORDERBY ('ARCOMP','ASC')
+      ->ORDERBY ('OFCALM','ASC')
+      // ->tosql();
+      ->get();
+      // dd($armados);
+
+      // dd($armados);
+    //
+    //   $columna = 'ofcalm';
+    //   $valor = 'ofcart';
+    //   $agrupados = [];
+    //       foreach ($armados as $armado) {
+    //           $arcomp = $armado->arcomp;
+    //           if (!isset($agrupados[$arcomp])) {
+    //             $agrupados[$arcomp] = ['arcomp' => $arcomp];
+    //     }
+    //
+    //       $agrupados[$arcomp][$armado->$columna] = $armado->$valor;
+    //
+    // }
+    //
+    // dd($agrupados);
+        // $agrupados[];
+        // $agrupados['armado1'] = 1234;
+
+
+          foreach ($armados as $armado) {
+
+                //datos comunes a los armados
+                $agrupados[$armado->arcomp]['armado'] = $armado->arcomp;
+                $agrupados[$armado->arcomp]['codigoArmado'] = $armado->ararti;
+                $agrupados[$armado->arcomp]['descripcion'] = $armado->mpdesc;
+                $agrupados[$armado->arcomp]['planificado'] = $armado->arplan;
+                $agrupados[$armado->arcomp]['cliente'] = $armado->mcrazo;
+                $agrupados[$armado->arcomp]['oc'] = $armado->pcnuoc;
+                $agrupados[$armado->arcomp]['atraso'] = $armado->cadien;
+                $agrupados[$armado->arcomp]['clise'] = $armado->maclise;
+
+
+
+                if ($armado->celab == 'EXT') { $centro = 'ext';}
+                if ($armado->celab == 'POM') { $centro = 'pom';}
+                if ($armado->celab == 'OFF') { $centro = 'off';}
+                if ($armado->celab == 'IMP') { $centro = 'imp';}
+                if ($armado->celab == 'EMB') { $centro = 'emb';}
+                if ($armado->celab == 'INY') { $centro = 'tap';}
+                if ($armado->celab == 'SOP') { $centro = 'sop';}
+                if ($armado->celab == 'ENV') { $centro = 'env';}
+                if ($armado->celab == 'ELA') { $centro = 'ela';}
+
+
+                $agrupados[$armado->arcomp][$centro."Orden"] = $armado->ofcomp;
+                $agrupados[$armado->arcomp][$centro."Codigo"] = $armado->ofcart;
+                $agrupados[$armado->arcomp][$centro."Barras"] = $armado->numoin;
+                $agrupados[$armado->arcomp][$centro."Diametro"] = $armado->mpdiam;
+                $agrupados[$armado->arcomp][$centro."Rosca"] = $armado->mprosm;
+                $agrupados[$armado->arcomp][$centro."Perforacion"] = $armado->mpperm;
+                $agrupados[$armado->arcomp][$centro."Cantidad"] = number_format($armado->ofcant, 0, ',', '.');
+                $agrupados[$armado->arcomp][$centro."Pendiente"] = number_format($armado->ofcape, 0, ',', '.');
+                $agrupados[$armado->arcomp][$centro."Diametro"] = $armado->mpdiam;
+                $agrupados[$armado->arcomp][$centro."Estado"] = $armado->ofesta;
+                $agrupados[$armado->arcomp][$centro."centro"] = $armado->celab;
+
+                }
+                // dd($agrupados);
+                // le agrego un marca a los armados para saber cuales FilterIterator
+$nuevo = 0;
+                foreach ($agrupados as $agrupado) {
+                  if (((isset($agrupado["elacentro"]) || isset($agrupado["envcentro"])) && (
+                          (isset($agrupado["extEstado"]) && ($agrupado["extEstado"] <> 'C')) ||
+                          (isset($agrupado["pomEstado"]) && ($agrupado["pomEstado"] <> 'C')) ||
+                          (isset($agrupado["impEstado"]) && ($agrupado["impEstado"] <> 'C')) ||
+                          (isset($agrupado["offEstado"]) && ($agrupado["offEstado"] <> 'C')) ||
+                          (isset($agrupado["embEstado"]) && ($agrupado["embEstado"] <> 'C')) ||
+                          (isset($agrupado["sopEstado"]) && ($agrupado["sopEstado"] <> 'C')))) ||
+                          (!isset($agrupado["elacentro"]) && !isset($agrupado["envcentro"])))
+
+                    {
+
+                      if ((isset($agrupado["extEstado"]) && ($agrupado["extEstado"] == 'C'
+                          && ((isset($agrupado["pomEstado"]) && ($agrupado["pomEstado"] <> 'C'))))) ||
+                          (isset($agrupado["pomEstado"]) && ($agrupado["pomEstado"] == 'C'
+                              && ((isset($agrupado["extEstado"]) && ($agrupado["extEstado"] <> 'C'))))))
+                             {
+                        // code...
+                      }
+
+                      $nuevo = $agrupado['armado'];
+                    $agrupados[$nuevo]['Marca'] = 1;
+                  }
+                  else {
+                    $nuevo = $agrupado['armado'];
+                    $agrupados[$nuevo]['Marca'] = 0;
+                  }
+                }
+
+
+//array que contiene solo los armados que tiene centros de plasticos activos y descarta los de env y ela
+
+          $sinEnv = [] ;
+          $sinEnvasado = [];
+          $arm = 0;
+            foreach ($agrupados as $agrupado) {
+              $arm = $agrupado['armado'];
+                if (
+                 ($agrupado['Marca'] == 1 ) &&
+                 (isset($agrupado['extEstado']) && $agrupado['extEstado'] == 'C' && isset($agrupado['pomEstado']) && $agrupado['pomEstado'] <> 'C') ||
+                 (isset($agrupado['pomEstado']) && $agrupado['pomEstado'] == 'C' && isset($agrupado['extEstado']) && $agrupado['extEstado'] <> 'C') ||
+                 ((!isset($agrupado['extEstado']) && $agrupado['pomEstado'] <> 'C')) ||
+                 ((!isset($agrupado['pomEstado']) && $agrupado['extEstado'] <> 'C')) ||
+                 (isset($agrupado['extEstado']) && $agrupado['extEstado'] <> 'C' && isset($agrupado['pomEstado']) && $agrupado['pomEstado'] <> 'C')
+                    )
+                  {
+                  // if ($agrupado['Marca'] == 1 ) {
+                  $sinEnv[$arm] = $agrupado;
+              }
+
+            }
+            // dd($sinEnv);
+
+
+
+
+          $sinEnvasado = collect($sinEnv);
+            // dd($sinEnvasado);
+
+      return view('programacionArmadosExtPom', compact('sinEnvasado'));
+
+    }
+
+
+
 
 
 

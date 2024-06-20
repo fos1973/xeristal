@@ -28,6 +28,8 @@
 
 
 
+
+
       <table class="table table-striped">
               <thead>
                   <tr>
@@ -36,13 +38,13 @@
                     {{-- <th scope="col">DESCRIPCION</th> --}}
                     {{-- <th scope="col">CLIENTE</th> --}}
                     {{-- <th scope="col">ATRASO</th> --}}
-                    <th scope="col">SOPLADO</th>
-                    <th scope="col">TAPAS</th>
+                    {{-- <th scope="col">SOPLADO</th> --}}
+                    {{-- <th scope="col">TAPAS</th> --}}
                     <th scope="col">EXTRUSION</th>
                     <th scope="col">POMOS</th>
-                    <th scope="col">OFFSET</th>
-                    <th scope="col">SERIGRAFIA</th>
-                    <th scope="col">EMBALADO</th>
+                    {{-- <th scope="col">OFFSET</th> --}}
+                    {{-- <th scope="col">SERIGRAFIA</th> --}}
+                    {{-- <th scope="col">EMBALADO</th> --}}
                   </tr>
               </thead>
               <tbody>
@@ -90,13 +92,15 @@
                       </div>
                     </td>
 
-                    <td>
-                      <div class="">
-                        @isset($armado['codigoArmado']) {{$armado["codigoArmado"]}} @endisset
-                      </div>
-                      <div class="mt-2">
+                    <td class="">
+                      <div class="d-flex">
+                        <div class="">
+                          @isset($armado['codigoArmado']) {{$armado["codigoArmado"]}} @endisset
+                        </div>
+                        <div class="mx-2">
                         @isset($armado['descripcion']) {{$armado["descripcion"]}} @endisset
                         </div>
+                      </div>
                     </td>
 
                     {{-- <td>
@@ -106,7 +110,7 @@
                     </td> --}}
 
                             {{-- SOPLADO --}}
-                    <td class="{{$sopClase}}">
+                    {{-- <td class="{{$sopClase}}">
                       <div class="">
                         <div class="">
                          <div class="">
@@ -122,11 +126,11 @@
                          </div>
                         </div>
                       </div>
-                    </td>
+                    </td> --}}
 
                             {{-- TAPAS --}}
 
-                    <td class="{{$tapClase}}">
+                    {{-- <td class="{{$tapClase}}">
                       <div class="">
                         <div class="">
                          <div class="">
@@ -142,52 +146,51 @@
                          </div>
                         </div>
                       </div>
-                    </td>
+                    </td> --}}
 
                             {{-- EXTRUSION --}}
-
                     <td class="{{$extClase}}">
-                      <div class="">
                         <div class="">
-                         <div class="">
-                            @isset($armado['extOrden']) OF: {{$armado["extOrden"]}}  CB: {{$armado["extBarras"]}} @endisset
                           <div class="d-flex">
-                            <div class="mt-2">
-                            @isset($armado['extCantidad']) Cant: {{$armado["extCantidad"]}} @endisset
+                            <div class="">
+                              @isset($armado['extOrden']) OF: {{$armado["extOrden"]}}  CBarras: {{$armado["extBarras"]}} @endisset
                             </div>
-                            <div class="mt-2 mx-2">
-                            @isset($armado['extPendiente']) Pen: {{$armado["extPendiente"]}} @endisset
-                            </div>
+                            <div class="d-flex">
+                                  <div class="mx-2">
+                                  @isset($armado['extCantidad']) Cantidad: {{$armado["extCantidad"]}} @endisset
+                                  </div>
+                                  <div class="mx-2">
+                                  @isset($armado['extPendiente']) Pendiente: {{$armado["extPendiente"]}} @endisset
+                                  </div>
+                                </div>
                           </div>
-                         </div>
                         </div>
-                      </div>
                     </td>
+
 
                             {{-- INYECCION DE CABEZAS --}}
 
                     <td class="{{$pomClase}}">
-                      <div class="">
                         <div class="">
-                         <div class="">
-
-                            @isset($armado['pomOrden']) OF: {{$armado["pomOrden"]}}  CB: {{$armado["pomBarras"]}} @endisset
                           <div class="d-flex">
-                            <div class="mt-2">
-                            @isset($armado['pomCantidad']) Cant: {{$armado["pomCantidad"]}} @endisset
+                            <div class="">
+                              @isset($armado['pomOrden']) OF: {{$armado["pomOrden"]}}  CBarras: {{$armado["pomBarras"]}} @endisset
                             </div>
-                            <div class="mt-2 mx-2">
-                            @isset($armado['pomPendiente']) Pen: {{$armado["pomPendiente"]}} @endisset
-                            </div>
+                            <div class="d-flex">
+                                  <div class="mx-2">
+                                  @isset($armado['pomCantidad']) Cantidad: {{$armado["pomCantidad"]}} @endisset
+                                  </div>
+                                  <div class="mx-2">
+                                  @isset($armado['pomPendiente']) Pendiente: {{$armado["pomPendiente"]}} @endisset
+                                  </div>
+                                </div>
                           </div>
-                         </div>
                         </div>
-                      </div>
                     </td>
 
                             {{-- OFFSET --}}
 
-                    <td class="{{$offClase}}">
+                    {{-- <td class="{{$offClase}}">
                       <div class="">
                         <div class="">
                          <div class="">
@@ -203,11 +206,11 @@
                          </div>
                         </div>
                       </div>
-                    </td>
+                    </td> --}}
 
                             {{-- SERIGRAFIA Y STAMPING --}}
 
-                    <td class="{{$impClase}}">
+                    {{-- <td class="{{$impClase}}">
                       <div class="">
                         <div class="">
                          <div class="">
@@ -223,12 +226,12 @@
                          </div>
                         </div>
                       </div>
-                    </td>
+                    </td> --}}
 
                             {{-- EMBALADO --}}
 
 
-                    <td class="{{$embClase}}">
+                    {{-- <td class="{{$embClase}}">
                       <div class="">
                         <div class="">
                          <div class="">
@@ -244,7 +247,7 @@
                          </div>
                         </div>
                       </div>
-                    </td>
+                    </td> --}}
 
 
 

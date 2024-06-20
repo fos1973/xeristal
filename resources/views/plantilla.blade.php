@@ -85,7 +85,10 @@
                       <a class="dropdown-item" href="{{url('programacion/SOP')}}">Programacion SOPLADO</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="{{url('/programacionArmados')}}">Programacion ARMADOS</a>
+                      <a class="dropdown-item" href="{{url('/programacionArmados')}}">Programacion ARMADOS TOTALES</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{url('/programacionArmadosExtPom')}}">Programacion ARMADOS EXT POM</a>
                     </li>
                   </ul>
                 </li>

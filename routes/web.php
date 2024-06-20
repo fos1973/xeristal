@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/devoluciones' , 'pedidosController@devoluciones');
   Route::get('/programacion/{centro}' , 'planificacionController@produccion');
   Route::get('/programacionArmados' , 'planificacionController@armados');
+  Route::get('/programacionArmadosExtPom' , 'planificacionController@armadosExtPom');
 
 
 });
